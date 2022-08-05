@@ -73,7 +73,7 @@ void loop()
 {
   button_stat = digitalRead(button_pin);
 
-  //sendData_toNetpie();
+  sendData_toNetpie();
 
 
 
@@ -91,6 +91,7 @@ void loop()
   if (stat == 1) {
     digitalWrite(relay_pin, HIGH);
     get_pzem_data();
+    sendData_toNetpie();
     if (userPowerCount == 0) {
       digitalWrite(relay_pin, LOW);
       lcd.setCursor(0, 3);
