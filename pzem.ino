@@ -60,36 +60,32 @@ void get_pzem_data()
 
     Serial.println("");
 
+    if (energy >= 1 && energy <= 150) {
+      kWh_1 = energy * 3.2484;
+    }
+    if (energy > 150) {
+      kWh_1 = 150 * 3.2484;
+    }
+
+    //หน่วยที่  151    -  400 หน่วยละ 4.2218  บาท
+
+    if (energy >= 151 && energy <= 400) {
+      kWh_2 = energy * 4.2218;
+    }
+    if (energy > 400) {
+      kWh_2 = 250 * 4.2218;
+      //401        -- >   หน่วยละ 4.4217  บาท
+      kWh_3 = (energy - 400) * 4.4217;
+    }
+
+    //รวมค่าใช้จ่ายทั้งหมด
+    total_kWh = kWh_1 + kWh_2 + kWh_3;
+    final_kWh = total_kWh + 38.22 + (energy * Ft);
+
+    Electric_bill = final_kWh + (final_kWh * 0.07);
+
+
 
 
   }
-}
-
-
-float cal_cost() {
-  if (energy >= 1 && energy <= 150) {
-    kWh_1 = energy * 3.2484;
-  }
-  if (energy > 150) {
-    kWh_1 = 150 * 3.2484;
-  }
-
-  //หน่วยที่  151    -  400 หน่วยละ 4.2218  บาท
-
-  if (energy >= 151 && energy <= 400) {
-    kWh_2 = energy * 4.2218;
-  }
-  if (energy > 400) {
-    kWh_2 = 250 * 4.2218;
-    //401        -- >   หน่วยละ 4.4217  บาท
-    kWh_3 = (energy - 400) * 4.4217;
-  }
-
-  //รวมค่าใช้จ่ายทั้งหมด
-  total_kWh = kWh_1 + kWh_2 + kWh_3;
-  final_kWh = total_kWh + 38.22 + (energy * Ft);
-
-  Electric_bill = final_kWh + (final_kWh * 0.07);
-
-  return Electric_bill;
 }

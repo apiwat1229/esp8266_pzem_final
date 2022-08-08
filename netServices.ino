@@ -54,8 +54,7 @@ void sendData_toNetpie()
   if (currentMillis - Millis_netpie >= 2000)
   {
     Millis_netpie = currentMillis;
-    float Electric_bill = cal_cost();
-
+   
     // jason format = { “data”:{ “field name 1”: value 1, “field name 2”: value 2, …, “field name n”: value n }}
 
     String data = "{\"data\": {\"Voltage\":" + String(voltage) + ", \"Current\":" + String(current) +

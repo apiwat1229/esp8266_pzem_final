@@ -22,7 +22,7 @@ const char* mqtt_password = "utbvJiqVcIoL2uCH_Coky3ciYxClg-hd";
 
 float Ft =  4.95;
 
-char msg[100];
+char msg[150];
 String payload;
 
 float voltage, current, power, energy, frequency, pf;
