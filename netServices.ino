@@ -19,23 +19,22 @@ void reconnect()
   }
 }
 
-void callback(char *topic, byte *payload, unsigned int length)
-{
+void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   Serial.print(topic);
-  Serial.print("]: ");
+  Serial.print("] ");
   String message;
-  for (int i = 0; i < length; i++)
-  {
+  for (int i = 0; i < length; i++) {
     message = message + (char)payload[i];
   }
   Serial.println(message);
-  if (String(topic) == "@msg/power")
-  {
-    if (message == "reset")
-    {
-      pzem.resetEnergy();
-    }
+  if (String(topic) == "@msg/set_ft/ft") {
+    int Ft = message.toInt();
+    delay(15);
+    String data = "{\"data\": {\"set_ft\":" + String(Ft) + "}}";
+    Serial.println(data);
+    data.toCharArray(msg, (data.length() + 1));
+    client.publish("@shadow/data/update", msg);
   }
 }
 
