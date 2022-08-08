@@ -20,7 +20,7 @@ const char* mqtt_Client = "1db944a6-7422-41a4-9465-7245b1ed3812";
 const char* mqtt_username = "3e6nw1Tkp2vf6zV7STrCt4n9RZMcxyqy";
 const char* mqtt_password = "utbvJiqVcIoL2uCH_Coky3ciYxClg-hd";
 
-float Ft;
+float Ft =  4.95;
 
 char msg[100];
 String payload;

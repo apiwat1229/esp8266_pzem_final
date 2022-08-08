@@ -75,8 +75,6 @@ void loop()
 
   sendData_toNetpie();
 
-
-
   if (stat == 0 ) {
     moneyCounter();
     digitalWrite(relay_pin, LOW);
@@ -91,7 +89,6 @@ void loop()
   if (stat == 1) {
     digitalWrite(relay_pin, HIGH);
     get_pzem_data();
-    sendData_toNetpie();
     if (userPowerCount == 0) {
       digitalWrite(relay_pin, LOW);
       lcd.setCursor(0, 3);
